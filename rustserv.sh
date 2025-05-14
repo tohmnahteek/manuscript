@@ -12,6 +12,10 @@ SERVERDIR="$RUSTDIR/server/$IDENTITY"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$RUSTDIR/RustDedicated_Data/Plugins:$RUSTDIR/RustDedicated_Data/Plugins/x86_64"
 
 server_wipe() {
+	if [ -z "$1"]; then
+		return 1
+	fi
+
 	case "$1" in
 		map)
 			rm -f "$SERVERDIR"/procedural* "$SERVERDIR/logs"/*
